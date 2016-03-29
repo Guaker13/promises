@@ -9,7 +9,7 @@
 # production:
   #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
   #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
-  development:
+development:
     GMAIL_DOMAIN: "gmail.com"
     GMAIL_USERNAME: "gauthier.fraiture@gmail.com"
     GMAIL_PASSWORD: "akerprepa13"
@@ -18,7 +18,7 @@
     LINKEDIN_KEY: "77rq5jgmj9jqq7"
     LINKEDIN_SECRET: "NIoTu8oksZ2XiEZk"
 
-    production:
+production:
      FACEBOOK_KEY: "1053216601423290"
      FACEBOOK_SECRET: "a4767391dbf4907663dbfd6cfebcb7f4"
      LINKEDIN_KEY: "77rq5jgmj9jqq7"

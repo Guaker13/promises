@@ -11,11 +11,10 @@
 <body>
 
   <%= render "layouts/navbar"  %>
-  <div class="wrapper" style="margin-top: 68px;">
-    <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
 
+  <div class="wrapper" style="margin-top: 70px;">
+  <%= render 'shared/flashes' %>
+    <div class="container">
       <%= yield %>
     </div>
   </div>

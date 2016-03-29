@@ -21,8 +21,8 @@
     <!-- Text link -->
 
     <% if user_signed_in? %>
-    Signed as <%= current_user.email %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <p class="navbar-wagon-item navbar-wagon-link width300"> Signed as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path , method: :delete %> </p>
     <% else %>
     <%= link_to "Sign in", new_user_session_path, { :class => "navbar-wagon-item navbar-wagon-link width" } %>
     <% end %>

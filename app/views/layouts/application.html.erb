@@ -12,11 +12,12 @@
 
   <%= render "layouts/navbar"  %>
 
-  <div class="wrapper" style="margin-top: 70px;">
-  <%= render 'shared/flashes' %>
-    <div class="container">
-      <%= yield %>
-    </div>
+  <div style="margin-top: 70px;">
+    <%= render 'shared/flashes' %>
+    <%= yield %>
+    <%= render "layouts/footer"  %>
+    
+
   </div>
 </body>
 </html>

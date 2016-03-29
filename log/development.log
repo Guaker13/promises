@@ -1577,3 +1577,219 @@ Started GET "/assets/promises-6b00ba51bcc1c90fbaadb8233d9ba62089d0684704f5186e3d
 
 
 Started GET "/assets/font-awesome/fontawesome-webfont-199411f659f41aaccb959bacb1b0de30e54f244352a48c6f9894e65ae0f8a9a1.woff" for ::1 at 2016-03-29 12:54:48 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20160328195649)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (15.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "confirmation_token" character varying, "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying, "first_name" character varying, "last_name" character varying, "avatar" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (5.7ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (1.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160328195649"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddOmniauthToUsers (20160328201504)
+  [1m[35m (6.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD "provider" character varying[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "uid" character varying
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160328201504"]]
+  [1m[35m (6.2ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.1ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/" for ::1 at 2016-03-29 13:07:30 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_navbar.html.erb (5.4ms)
+Completed 200 OK in 4941ms (Views: 4931.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-fb27879e98fd3f49bcd8c3444f2d58e8d847612a2711dcf75c0c2e70f05454a2.css?body=1" for ::1 at 2016-03-29 13:07:35 +0200
+
+
+Started GET "/assets/promises-6b00ba51bcc1c90fbaadb8233d9ba62089d0684704f5186e3dfeed4baf7617c8.png" for ::1 at 2016-03-29 13:07:35 +0200
+
+
+Started GET "/users/sign_in" for ::1 at 2016-03-29 13:07:40 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (17.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (327.9ms)
+  Rendered layouts/_navbar.html.erb (1.0ms)
+Completed 200 OK in 408ms (Views: 385.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-03-29 13:07:43 +0200
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-03-29 13:07:43 +0200
+
+
+Started GET "/users/auth/facebook/callback?code=AQCnPqu7MWxebBG_h_ZdQoKoicV-Kaxg5fM_hbtMSHs0vewHGoQxIeV7wvpRxp357ESbom-F49nFBfpe3F0NOl_1XAZAJG2h_z0U13jV75ijLtaIyjn8i41WPznReKbSNo6CnF3UmlrjsCHuYGi6IhTAeq7hw9T4ACsM7Tlpd6IuOpNCUqr2EcyxdMTfCCfc2lAr_G-3aAE7Lg7y1gEgM-9FCL8kd7Hwuon3NHEnaHuWiJ0bspGOYlxlXzTCcM60qf2DYJIomyt2kdU_X6JtpJpv1lOHBViJPmMFZ3vkW9iCcRIBnQHLPzooDVd8dy-1ptM&state=68b87b5e0adfb5ce47095fb90111ffa89ae1fb54e17801ca" for ::1 at 2016-03-29 13:07:43 +0200
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQCnPqu7MWxebBG_h_ZdQoKoicV-Kaxg5fM_hbtMSHs0vewHGoQxIeV7wvpRxp357ESbom-F49nFBfpe3F0NOl_1XAZAJG2h_z0U13jV75ijLtaIyjn8i41WPznReKbSNo6CnF3UmlrjsCHuYGi6IhTAeq7hw9T4ACsM7Tlpd6IuOpNCUqr2EcyxdMTfCCfc2lAr_G-3aAE7Lg7y1gEgM-9FCL8kd7Hwuon3NHEnaHuWiJ0bspGOYlxlXzTCcM60qf2DYJIomyt2kdU_X6JtpJpv1lOHBViJPmMFZ3vkW9iCcRIBnQHLPzooDVd8dy-1ptM", "state"=>"68b87b5e0adfb5ce47095fb90111ffa89ae1fb54e17801ca"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1  [["provider", "facebook"], ["uid", "10154061083939049"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'frite01@hotmail.com' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 AND "users"."confirmation_token" = $3  ORDER BY "users"."id" ASC LIMIT 1[0m  [["provider", "facebook"], ["uid", "10154061083939049"], ["confirmation_token", "ad4984763e96f63a0d326d0a9f2d355698f219c952bfe4065847ec7242a7c892"]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("provider", "uid", "email", "encrypted_password", "first_name", "last_name", "avatar", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["provider", "facebook"], ["uid", "10154061083939049"], ["email", "frite01@hotmail.com"], ["encrypted_password", "$2a$10$bkNOFFvGdiUd/ki4nFBCPOXJOVHCfkmLqgaOETvjdNINv2qROJbRm"], ["first_name", "Gauthier"], ["last_name", "Fraiture"], ["avatar", "http://graph.facebook.com/10154061083939049/picture?type=large"], ["created_at", "2016-03-29 11:07:44.529763"], ["updated_at", "2016-03-29 11:07:44.529763"], ["confirmation_token", "PbQGGwxPcA1kDbP2G2pe"], ["confirmation_sent_at", "2016-03-29 11:07:44.730288"]]
+  Rendered devise/mailer/confirmation_instructions.html.erb (6.7ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 176.6ms
+
+Sent mail to frite01@hotmail.com (2178.1ms)
+Date: Tue, 29 Mar 2016 13:07:44 +0200
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: frite01@hotmail.com
+Message-ID: <56fa6200e4037_65953fcd366c4d6c988be@MacBook-Pro-de-Gauthier.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome frite01@hotmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=PbQGGwxPcA1kDbP2G2pe">Confirm my account</a></p>
+
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Completed 401 Unauthorized in 2682ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-03-29 13:07:47 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (15.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (19.6ms)
+  Rendered layouts/_navbar.html.erb (1.9ms)
+Completed 200 OK in 69ms (Views: 68.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/linkedin" for ::1 at 2016-03-29 13:08:42 +0200
+
+
+Started GET "/users/auth/linkedin" for ::1 at 2016-03-29 13:08:42 +0200
+
+
+Started GET "/users/auth/linkedin/callback?oauth_token=78--827ec05e-d2de-437f-944d-46921919986b&oauth_verifier=58661" for ::1 at 2016-03-29 13:08:43 +0200
+Processing by Users::OmniauthCallbacksController#linkedin as HTML
+  Parameters: {"oauth_token"=>"78--827ec05e-d2de-437f-944d-46921919986b", "oauth_verifier"=>"58661"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1  [["provider", "linkedin"], ["uid", "5sg7yFaeKm"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'gauthier.fraiture@gmail.com' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 AND "users"."confirmation_token" = $3  ORDER BY "users"."id" ASC LIMIT 1[0m  [["provider", "linkedin"], ["uid", "5sg7yFaeKm"], ["confirmation_token", "8b62a586eab54c08a16e89a50065f2f92f48101b11593e0dece4979cf72474f4"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("provider", "uid", "email", "encrypted_password", "first_name", "last_name", "avatar", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"  [["provider", "linkedin"], ["uid", "5sg7yFaeKm"], ["email", "gauthier.fraiture@gmail.com"], ["encrypted_password", "$2a$10$a02g8WEZmJTcPYYbxSe2PemDdYUP2Q7uOibXx2ijuuV0yiNmxdxNq"], ["first_name", "Gauthier"], ["last_name", "Fraiture"], ["avatar", "https://media.licdn.com/mpr/mprx/0_arz9XdxYbaMc9H8JbTDZ2ZYYC7LcnU3XTTTZCyrxiH0nnITd3rD9uEjY8WNcnExJaq_REYYOw4N9z01kX_ro2jx-a4NBz0L5T_rzFpE0LJTR0dOJD-QUbekamSmby0tNHhNV8CwU6XI"], ["created_at", "2016-03-29 11:08:44.923689"], ["updated_at", "2016-03-29 11:08:44.923689"], ["confirmation_token", "uuMzUxDoXJrRagTAF6PL"], ["confirmation_sent_at", "2016-03-29 11:08:44.924940"]]
+  Rendered devise/mailer/confirmation_instructions.html.erb (2.9ms)
+
+Devise::Mailer#confirmation_instructions: processed outbound mail in 16.9ms
+
+Sent mail to gauthier.fraiture@gmail.com (1609.2ms)
+Date: Tue, 29 Mar 2016 13:08:44 +0200
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: gauthier.fraiture@gmail.com
+Message-ID: <56fa623ce6a28_65953fcd369c0160989d@MacBook-Pro-de-Gauthier.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome gauthier.fraiture@gmail.com!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=uuMzUxDoXJrRagTAF6PL">Confirm my account</a></p>
+
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+Completed 401 Unauthorized in 1708ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-03-29 13:08:46 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (11.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.0ms)
+  Rendered layouts/_navbar.html.erb (0.8ms)
+Completed 200 OK in 59ms (Views: 57.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/confirmation?confirmation_token=uuMzUxDoXJrRagTAF6PL" for ::1 at 2016-03-29 13:08:57 +0200
+Processing by Devise::ConfirmationsController#show as HTML
+  Parameters: {"confirmation_token"=>"uuMzUxDoXJrRagTAF6PL"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."confirmation_token" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["confirmation_token", "uuMzUxDoXJrRagTAF6PL"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "confirmed_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["confirmed_at", "2016-03-29 11:08:57.940896"], ["updated_at", "2016-03-29 11:08:57.946940"], ["id", 2]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 35ms (ActiveRecord: 7.1ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-03-29 13:08:57 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (18.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (24.4ms)
+  Rendered layouts/_navbar.html.erb (0.9ms)
+Completed 200 OK in 74ms (Views: 73.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/linkedin" for ::1 at 2016-03-29 13:09:06 +0200
+
+
+Started GET "/users/auth/linkedin" for ::1 at 2016-03-29 13:09:07 +0200
+
+
+Started GET "/users/auth/linkedin/callback?oauth_token=78--e9c85133-6b20-4a23-b77c-986d5ce836e3&oauth_verifier=64930" for ::1 at 2016-03-29 13:09:08 +0200
+Processing by Users::OmniauthCallbacksController#linkedin as HTML
+  Parameters: {"oauth_token"=>"78--e9c85133-6b20-4a23-b77c-986d5ce836e3", "oauth_verifier"=>"64930"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1  [["provider", "linkedin"], ["uid", "5sg7yFaeKm"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2016-03-29 11:09:09.444685"], ["current_sign_in_at", "2016-03-29 11:09:09.444685"], ["last_sign_in_ip", "::1/128"], ["current_sign_in_ip", "::1/128"], ["sign_in_count", 1], ["updated_at", "2016-03-29 11:09:09.445730"], ["id", 2]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/auth/linkedin/callback?oauth_token=78--827ec05e-d2de-437f-944d-46921919986b&oauth_verifier=58661
+Completed 302 Found in 8ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/users/auth/linkedin/callback?oauth_token=78--827ec05e-d2de-437f-944d-46921919986b&oauth_verifier=58661" for ::1 at 2016-03-29 13:09:09 +0200
+Processing by Users::OmniauthCallbacksController#failure as HTML
+  Parameters: {"oauth_token"=>"78--827ec05e-d2de-437f-944d-46921919986b", "oauth_verifier"=>"58661"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-03-29 13:09:09 +0200
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (0.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  Rendered layouts/_navbar.html.erb (2.3ms)
+Completed 200 OK in 43ms (Views: 42.4ms | ActiveRecord: 0.3ms)

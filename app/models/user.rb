@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  has_one :worker
+  has_one :business
+  has_many :workspaces, through: :business
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,

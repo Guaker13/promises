@@ -9,6 +9,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 </head>
 <body>
+  <% if user_signed_in? %>
+  Signed as <%= current_user.email %>. Not you?
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% else %>
+  <%= link_to "Sign in", new_user_session_path %> or <%= link_to "Sign up", new_user_registration_path %>.
+  <% end %>
   <div class="wrapper">
     <div class="container">
       <p class="notice"><%= notice %></p>

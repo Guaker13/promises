@@ -29,6 +29,8 @@ gem 'devise'
 
 # Omniauth Facebook => facebook connect
 gem 'omniauth-facebook'
+# Omniauth Linkedin => linkedin connect
+gem 'omniauth-linkedin'
 
 #Front-end setup suggested by Le Wagon
 gem 'bootstrap-sass', '~> 3.3.1'

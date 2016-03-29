@@ -1,10 +1,8 @@
 <% if devise_mapping.omniauthable? %>
   <% resource_class.omniauth_providers.each do |provider| %>
-
-    <%= link_to " sign in with #{OmniAuth::Utils.camelize(provider)}",
-    omniauth_authorize_path(resource_name, provider),
-    class: 'btn btn-block btn-social btn-linkedin'%>
-    <span class="<%= "fa fa-#{OmniAuth::Utils.camelize(provider)}".downcase%>"></span>
-    <br />
+    <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-block btn-social btn-#{OmniAuth::Utils.camelize(provider).downcase} text-center" do %>
+       <span class="<%= "fa fa-#{OmniAuth::Utils.camelize(provider)}".downcase%>"></span>
+       <%="Connect with #{OmniAuth::Utils.camelize(provider)}"%>
+    <% end %>
   <% end -%>
 <% end -%>

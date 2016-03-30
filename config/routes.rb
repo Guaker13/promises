@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  resources :availabilities, only: [:new, :create, :edit, :update, :delete]
+
+  resources :bookings, only: [:new, :create, :show]
+  get 'bookings/list'
+
+  resources :workspaces
+  get 'workspaces/search'
+  get 'workspaces/hot'
+  get 'workspaces/dashboard'
+
+  resources :users, only: [:show, :edit, :update]
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root'pages#home'

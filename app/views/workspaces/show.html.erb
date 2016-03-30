@@ -1,3 +1,24 @@
+
+<div class="card-container">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-xs-12 col-sm-12">
+				<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg');">
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
 <div class="container padded">
-  <p><%= @workspace.name %></p>
+
+	<%=@workspace.location  %>
+	<p>Wifi: <%=@workspace.wifi %></p>
+	<p>Price: <%=@workspace.price %> <%= @workspace.price_unit%></p>
+	<p><%=@workspace.capacity%> square meters</p>
+	<!-- <img class="card-user avatar" src="images/seb.jpg"> -->
+
 </div>

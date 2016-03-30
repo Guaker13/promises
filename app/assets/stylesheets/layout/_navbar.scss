@@ -1,7 +1,7 @@
 /* Main class */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(255,124,0,1),0 1px 0 0 rgba(0,0,0,0.03);
-  background: rgba(5,5,5,0.7);
+  background: $navbar;
   transition: all 0.7s ease;
   display: flex;
   height: 70px;

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  resources :availabilities, only: [:new, :create, :edit, :update, :delete]
+  resources :unavailabilities, only: [:new, :create, :edit, :update, :delete]
 
   get 'bookings/list'
   resources :bookings, only: [:new, :create, :show]

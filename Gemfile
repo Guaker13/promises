@@ -38,6 +38,9 @@ gem 'font-awesome-sass', '~> 4.2.0'
 gem 'simple_form'
 gem "autoprefixer-rails"
 
+gem 'puma'
+gem 'faker'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -58,11 +61,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'puma'
-  gem 'faker'
 end
 
 group :production do
   gem "rails_12factor"
-  gem 'puma'
 end

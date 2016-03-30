@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
-  has_one :worker
+  has_one :worker, dependent: :destroy
   has_one :business
   has_many :workspaces, through: :business
   after_create  :create_business
+  accepts_nested_attributes_for :worker
+  after_create :create_worker
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
@@ -23,5 +25,10 @@ class User < ActiveRecord::Base
   def create_business
     user_business = Business.new(user: self)
     user_business.save!(validate: false)
+  end
+
+  def create_worker
+   user_worker = Worker.new(user: self)
+   user_worker.save!(validate: false)
   end
 end

@@ -4,23 +4,6 @@
       <div class='thumbnail'>
         <div class='form_box'>
 
-          <h2>Welcome, <%= current_user.first_name%> !</h2>
-
-          <%= image_tag current_user.avatar, class: 'avatar-large' %>
-          <hr>
-          <p><b>First name</b>: <%= current_user.first_name%></p>
-          <p><b>Last name</b>: <%= current_user.last_name%></p>
-          <p><b>Member since</b>: <%= current_user.created_at%></p>
-          <p><b>Social media</b>: <%= current_user.provider%></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class='row'>
-    <div class='col-xs-6 col-xs-offset-3'>
-      <div class='thumbnail'>
-        <div class='form_box'>
-
           <h2>Edit your credentials</h2>
 
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

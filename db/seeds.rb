@@ -10,13 +10,14 @@
     confirmed_at: DateTime.new)
 end
 
-User.all.each do |user|
-  Business.create(
-    user_id: user.id,
-    name: Faker::Company.name,
-    address: 'Place Sainte-Gudule, 5',
-    logo: 'https://d21ii91i3y6o6h.cloudfront.net/gallery_images/from_proof/5808/large/1433932171/le-wagon-logo.png')
-end
+# gauth: I've disabled it because of my after_create :create_business method
+# User.all.each do |user|
+#   Business.create(
+#     user_id: user.id,
+#     name: Faker::Company.name,
+#     address: 'Place Sainte-Gudule, 5',
+#     logo: 'https://d21ii91i3y6o6h.cloudfront.net/gallery_images/from_proof/5808/large/1433932171/le-wagon-logo.png')
+# end
 
 Business.all.each do |business|
   3.times do

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_one :worker
   has_one :business
   has_many :workspaces, through: :business
+  after_create  :create_business
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
@@ -17,5 +18,10 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.avatar = auth.info.image # assuming the user model has an image
     end
+  end
+
+  def create_business
+    user_business = Business.new(user: self)
+    user_business.save!(validate: false)
   end
 end

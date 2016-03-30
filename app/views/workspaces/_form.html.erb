@@ -6,5 +6,9 @@
   <%= f.input :wifi %>
   <%= f.input :price %>
   <%= f.input :price_unit %>
+  <%= f.simple_fields_for :pictures do |pictures_form| %>
+    <%= pictures_form.input :photo %>
+    <%= pictures_form.input :photo_cache, as: :hidden %>
+  <% end -%>
   <%= f.button :submit %>
 <% end -%>

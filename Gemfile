@@ -26,11 +26,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
 # authentication solution for Rails based on Warden
 gem 'devise'
-
 # Omniauth Facebook => facebook connect
 gem 'omniauth-facebook'
 # Omniauth Linkedin => linkedin connect
 gem 'omniauth-linkedin'
+# images upload
+gem 'cloudinary'
+gem 'carrierwave'
 
 #Front-end setup suggested by Le Wagon
 gem 'bootstrap-sass', '~> 3.3.1'

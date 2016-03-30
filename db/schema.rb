@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330140925) do
+ActiveRecord::Schema.define(version: 20160330200549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20160330140925) do
   end
 
   add_index "businesses", ["user_id"], name: "index_businesses_on_user_id", using: :btree
+
+  create_table "pictures", force: :cascade do |t|
+    t.integer  "workspace_id"
+    t.string   "photo"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "pictures", ["workspace_id"], name: "index_pictures_on_workspace_id", using: :btree
 
   create_table "unavailabilities", force: :cascade do |t|
     t.integer  "workspace_id"
@@ -103,6 +112,7 @@ ActiveRecord::Schema.define(version: 20160330140925) do
   add_foreign_key "bookings", "workers"
   add_foreign_key "bookings", "workspaces"
   add_foreign_key "businesses", "users"
+  add_foreign_key "pictures", "workspaces"
   add_foreign_key "unavailabilities", "workspaces"
   add_foreign_key "workers", "users"
   add_foreign_key "workspaces", "businesses"

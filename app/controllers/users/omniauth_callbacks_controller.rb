@@ -19,7 +19,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       @user.skip_confirmation!
-      # redirect_to root_path, :event => :authentication
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "LinkedIn") if is_navigational_format?
     else

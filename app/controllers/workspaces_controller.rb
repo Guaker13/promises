@@ -5,9 +5,11 @@ class WorkspacesController < ApplicationController
   end
 
   def new
+    @workspace = Workspace.new
   end
 
   def create
+    @workspace = Workspace.new(workspace_params)
   end
 
   def show
@@ -39,7 +41,7 @@ class WorkspacesController < ApplicationController
 
   # Do not forget to update the strong params here under
   # if you want
-  def user_params
+  def workspace_params
     params.require(:workspace).permit(:business_id, :capacity, :wifi)
   end
 end

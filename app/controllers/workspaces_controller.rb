@@ -9,9 +9,8 @@ class WorkspacesController < ApplicationController
   end
 
   def create
-    workspace_params[:business_id] = current_user.business.id
     @workspace = Workspace.new(workspace_params)
-
+    @workspace.business_id = current_user.business.id
     respond_to do |format|
       if @workspace.save
         format.html { redirect_to @workspace, notice: 'Workspace was successfully created.' }

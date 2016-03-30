@@ -1,4 +1,4 @@
-class AvailabilitiesController < ApplicationController
+class UnavailabilitiesController < ApplicationController
   def new
   end
 

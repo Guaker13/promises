@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # Do not forget to add only: [:action] if necessary
   before_action :set_user
 
+
   def show
   end
 
@@ -20,6 +21,8 @@ class UsersController < ApplicationController
   # Do not forget to update the strong params here under
   # if you want
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :avatar, :provider)
+    params.require(:user).permit(:first_name, :last_name, :email, :avatar, :provider, worker_attributes: [:working_style])
   end
+
+
 end

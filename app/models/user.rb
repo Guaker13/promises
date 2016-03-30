@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
-  has_one :worker
+  has_one :worker, dependent: :destroy
   has_one :business
   has_many :workspaces, through: :business
+  accepts_nested_attributes_for :worker
+  after_create :create_worker
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
@@ -17,5 +19,10 @@ class User < ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.avatar = auth.info.image # assuming the user model has an image
     end
+  end
+
+  def create_worker
+   user_worker = Worker.new(user: self)
+   user_worker.save!(validate: false)
   end
 end

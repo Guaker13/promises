@@ -4,54 +4,13 @@
 
 		<h1>ProMesis</h1>
 		<br>
-		<form action="/workspaces/search" class="form-inline margin">
 
-			<input type="text" class="form-control input-lg" placeholder="city" name="city">
+		
+		<%= render 'shared/search_form' %>
+		
 
-			<input type="text" class="form-control input-lg" name="daterange" placeholder="01/01/2015 - 01/31/2015" name="daterange">
-
-			<select name="persons" id="" class="form-control input-lg">
-				<option value="1">1 person</option>
-				<option value="2">2 - 4 persons</option>
-				<option value="3">4+ persons</option>
-			</select>
-
-			<button type="submit" class="btn btn-primary btn-lg">Search</button>
-
-		</form>
-
-		<script type="text/javascript">
-			$(function() {
-				$('input[name="daterange"]').daterangepicker({
-					"showDropdowns": true,
-					"showWeekNumbers": true,
-					"timePickerIncrement": 60,
-					"autoApply": true,
-					"startDate": "01/01/2016",
-					"endDate": "01/02/2016",
-					"opens": "center",
-					"buttonClasses": "btn btn-lg"
-				}, function(start, end, label) {
-					console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
-			});
-		});
-	</script>
-
+	</div>
 </div>
-</div>
-
-
-
-
-<!-- Include  Moment.js -->
-<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-
-
-
 
 <div class="card-container">
 	<div class="container">

@@ -2,7 +2,7 @@
 
 	<input type="text" class="form-control input-lg" placeholder="city" name="city" value="<%= params[:city] %>">
 
-	<input type="text" class="form-control input-lg" name="daterange" placeholder="01/01/2015 - 01/31/2015" name="daterange" value="<%= params[:daterange] %>">
+	<input type="text" class="form-control input-lg" name="daterange" name="daterange" value="<%= params[:daterange] %>">
 
 	<button type="submit" class="btn btn-primary btn-lg">Search</button>
 
@@ -13,7 +13,6 @@
 		$('input[name="daterange"]').daterangepicker({
 			"showDropdowns": true,
 			"showWeekNumbers": true,
-			"timePickerIncrement": 60,
 			"autoApply": true,
 			"startDate": "01/01/2016",
 			"endDate": "01/02/2016",

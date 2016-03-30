@@ -6,13 +6,14 @@ Rails.application.routes.draw do
 
   resources :availabilities, only: [:new, :create, :edit, :update, :delete]
 
-  resources :bookings, only: [:new, :create, :show]
   get 'bookings/list'
+  resources :bookings, only: [:new, :create, :show]
 
-  resources :workspaces
+
   get 'workspaces/search'
   get 'workspaces/hot'
   get 'workspaces/dashboard'
+  resources :workspaces
 
   resources :users, only: [:show, :edit, :update] do
     resource :worker, only: [:edit, :update]

@@ -5,6 +5,7 @@ class WorkspacesController < ApplicationController
   end
 
   def new
+    @business_id =
     @workspace = Workspace.new
   end
 

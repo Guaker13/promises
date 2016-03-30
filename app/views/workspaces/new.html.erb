@@ -1,2 +1,5 @@
-<h1>Workspaces#new</h1>
-<p>Find me in app/views/workspaces/new.html.erb</p>
+<%= simple_form_for @workspace do |f| %>
+  <%= f.input :name %>
+  <%= f.input :capacity %>
+  <%= f.input :wifi %>
+<% end -%>

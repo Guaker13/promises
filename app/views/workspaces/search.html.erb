@@ -3,6 +3,8 @@
 	<h2>Searching for:<h2>
 
 		<%= render 'shared/search_form' %>
+		<%= link_to "Workspaces", "/workspaces", class: "btn btn-primary" %>
+		<%= link_to "The Hottest Workspaces", "/workspaces/hot", class: "btn btn-danger" %>
 
 	</div>
 
@@ -17,7 +19,7 @@
 						<div class="card-description">
 							<h2>Wifi: <%=work.wifi %></h2>
 							<p>Price: <%=work.price %> <%= work.price_unit%></p>
-							<p><%=work.capacity%></p>
+							<p><%=work.capacity%> square meters</p>
 						</div>
 						<!-- <img class="card-user avatar" src="images/seb.jpg"> -->
 						<a class="card-link" href="#" ></a>

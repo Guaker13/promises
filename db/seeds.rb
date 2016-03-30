@@ -25,7 +25,7 @@ Business.all.each do |business|
       business_id: business.id,
       # name: Faker::Address.city_prefix,
       location: Faker::Address.street_name,
-      price: Faker::Number.number(3)
+      price: Faker::Number.number(3),
       capacity: 10,
       wifi: true)
   end

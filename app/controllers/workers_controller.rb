@@ -14,6 +14,6 @@ class WorkersController < ApplicationController
   end
 
   def worker_params
-    params.require(:worker).permit(:working_style)
+    params.require(:worker).permit({:working_style => []})
   end
 end

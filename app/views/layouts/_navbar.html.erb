@@ -16,38 +16,32 @@
     </form>
 
     <!-- Text link -->
-    <a href="#about" class="navbar-wagon-item navbar-wagon-link">About</a>
-
-    <!-- Text link -->
-
     <% if !user_signed_in? %>
     <%= link_to "Sign in", new_user_session_path, { :class => "navbar-wagon-item navbar-wagon-link width" } %>
-<!--     <%= link_to "Sign up", new_user_registration_path, { :class => "navbar-wagon-item navbar-wagon-link width" } %> -->
+    <!--     <%= link_to "Sign up", new_user_registration_path, { :class => "navbar-wagon-item navbar-wagon-link width" } %> -->
+    <!-- Text link -->
+    <a href="#about" class="navbar-wagon-item navbar-wagon-link">About</a>
     <% end %>
 
 
     <!-- Profile picture and dropdown -->
     <% if user_signed_in? %>
       <!-- Button (call-to-action) -->
-      <% if current_user.workspaces.nil? %>
+      <% if current_user.workspaces.empty? %>
         <%= link_to "Share a space", new_workspace_path, { :class => "avbar-wagon-item navbar-wagon-button btn" } %>
       <% else %>
-        <%= link_to "Dashboard", workspaces_dashboard_path, { :class => "avbar-wagon-item navbar-wagon-button btn" } %>
+        <%= link_to "Dashboard", user_dashboard_path(current_user), { :class => "avbar-wagon-item navbar-wagon-button btn" } %>
       <% end -%>
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <img src= <%= current_user.avatar %> class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>Hi <%= current_user.first_name%> !</li>
               <li><%= link_to "Profile", user_path(current_user) %></li>
               <li><%= link_to "Log out", destroy_user_session_path , method: :delete %></li>
             </ul>
           </div>
         </div>
     <% end %>
-
-      <!-- Button (call-to-action) -->
- <!--      <a href="" class="navbar-wagon-item navbar-wagon-button btn">New space</a> -->
     </div>
 
     <!-- Dropdown appearing on mobile only -->
@@ -57,14 +51,19 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
            <% if user_signed_in? %>
-           <p class="navbar-wagon-item navbar-wagon-link width300"> Signed as <%= current_user.email %>. Not you?
+           <p class="navbar-wagon-item navbar-wagon-link">
             <%= link_to "Sign out", destroy_user_session_path , method: :delete %> </p>
+            <li>
+              <% if current_user.workspaces.empty? %>
+              <%= link_to "Share a space", new_workspace_path, { :class => "navbar-wagon-item navbar-wagon-link" } %>
+              <% else %>
+              <%= link_to "Dashboard", user_dashboard_path(current_user), { :class => "navbar-wagon-item navbar-wagon-link" } %>
+              <% end -%>
+            </li>
             <% else %>
-            <%= link_to "Sign in", new_user_session_path, { :class => "navbar-wagon-item navbar-wagon-link width" } %>
-            <% end %>
+            <%= link_to "Sign in", new_user_session_path, { :class => "navbar-wagon-item navbar-wagon-link" } %>
           </li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Dashboard</a></li>
+          <% end %>
         </ul>
       </div>
     </div>

@@ -8,7 +8,7 @@
         </div>
         <div class="modal-body">
           <%= simple_form_for [@user, @user.worker] do |f| %>
-          <%= f.input :working_style %>
+          <%= f.input :working_style, :as => :check_boxes, :collection => ["Happy", "Corporate", "Geeky", "Awkard nerd", "Start-upper", "Weird random guy with a propeller beanie"] %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

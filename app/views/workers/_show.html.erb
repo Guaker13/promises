@@ -1,0 +1,5 @@
+<% if !@user.worker.working_style.nil? %>
+<% @user.worker.working_style.each do |style| %>
+  <%= style %>&nbsp
+<% end %>
+<% end %>

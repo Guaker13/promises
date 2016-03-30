@@ -1,30 +1,31 @@
 <div class="container padded">
 	<h2>All the Workspaces<h2>
+		<%= link_to "The Hottest Workspaces", "/workspaces/hot", class: "btn btn-danger" %>
 
 
 	</div>
 
 
-<div class="card-container">
-	<div class="container">
-		<div class="row">
-			<% Workspace.all.each do |work|  %>
+	<div class="card-container">
+		<div class="container">
+			<div class="row">
+				<% Workspace.all.each do |work|  %>
 
-			<div class="col-xs-12 col-sm-4">
-				<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg');">
-					<div class="card-category"><%=work.location  %></div>
-					<div class="card-description">
-						<h2>Wifi: <%=work.wifi %></h2>
-						<p>Price: <%=work.price %> <%= work.price_unit%></p>
-						<p><%=work.capacity%> square meters</p>
+				<div class="col-xs-12 col-sm-4">
+					<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg');">
+						<div class="card-category"><%=work.location  %></div>
+						<div class="card-description">
+							<h2>Wifi: <%=work.wifi %></h2>
+							<p>Price: <%=work.price %> <%= work.price_unit%></p>
+							<p><%=work.capacity%> square meters</p>
+						</div>
+						<!-- <img class="card-user avatar" src="images/seb.jpg"> -->
+						<a class="card-link" href="#" ></a>
 					</div>
-					<!-- <img class="card-user avatar" src="images/seb.jpg"> -->
-					<a class="card-link" href="#" ></a>
 				</div>
-			</div>
-			<% end  %>
+				<% end  %>
 
+			</div>
 		</div>
 	</div>
-</div>
 

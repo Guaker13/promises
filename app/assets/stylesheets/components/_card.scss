@@ -1,3 +1,17 @@
+// show card
+
+.card-container-show {
+  margin: 60px 40px 0px 40px;
+} 
+
+.card-description-show {
+  background-color: $navbar;
+  color: $orange;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+// normal card
 .card-container {
   margin: 60px 40px;
 }

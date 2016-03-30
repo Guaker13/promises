@@ -1,5 +1,6 @@
 
-<div class="card-container">
+
+<div class="card-container-show">
 	<div class="container">
 		<div class="row">
 
@@ -14,11 +15,12 @@
 </div>
 
 <div class="container padded">
+	<div class="card-description-show">
 
-	<%=@workspace.location  %>
-	<p>Wifi: <%=@workspace.wifi %></p>
-	<p>Price: <%=@workspace.price %> <%= @workspace.price_unit%></p>
-	<p><%=@workspace.capacity%> square meters</p>
-	<!-- <img class="card-user avatar" src="images/seb.jpg"> -->
-
+		<%=@workspace.location  %>
+		<p>Wifi: <%=@workspace.wifi %></p>
+		<p>Price: <%=@workspace.price %> <%= @workspace.price_unit%></p>
+		<p><%=@workspace.capacity%> square meters</p>
+		<!-- <img class="card-user avatar" src="images/seb.jpg"> -->
+	</div>
 </div>

@@ -13,7 +13,7 @@ class WorkspacesController < ApplicationController
     @workspace.business_id = current_user.business.id
     respond_to do |format|
       if @workspace.save
-        format.html { redirect_to @workspace, notice: 'Workspace was successfully created.' }
+        format.html { redirect_to workspaces_dashboard_path, notice: 'Workspace was successfully created.' }
         format.json { render :show, status: :created, location: @workspace }
       else
         @workspaces = workspace.all
@@ -30,6 +30,15 @@ class WorkspacesController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @workspace.update(workspace_params)
+        format.html { redirect_to workspaces_dashboard_path, notice: 'Workspace was successfully updated.' }
+        format.json { render :show, status: :ok, location: @workspace }
+      else
+        format.html { render :edit }
+        format.json { render json: @workspace.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def delete

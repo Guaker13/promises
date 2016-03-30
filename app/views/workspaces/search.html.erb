@@ -1,26 +1,30 @@
-<h1>Workspaces#search</h1>
-<p>Search for:</p>
 
-<%= render 'shared/search_form' %>
+<div class="container padded">
+	<h2>Searching for:<h2>
 
-<div class="card-container">
-	<div class="container">
-		<div class="row">
-<% Workspace.all.each do |work|  %>
+		<%= render 'shared/search_form' %>
 
-			<div class="col-xs-12 col-sm-4">
-				<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg');">
-					<div class="card-category"><%=work.location  %></div>
-					<div class="card-description">
-						<h2>Wifi: <%=work.wifi %></h2>
-						<p><%=work.price %> <%= work.price_unit%></p>
+	</div>
+
+	<div class="card-container">
+		<div class="container">
+			<div class="row">
+				<% Workspace.all.each do |work|  %>
+
+				<div class="col-xs-12 col-sm-4">
+					<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg');">
+						<div class="card-category"><%=work.location  %></div>
+						<div class="card-description">
+							<h2>Wifi: <%=work.wifi %></h2>
+							<p>Price: <%=work.price %> <%= work.price_unit%></p>
+							<p><%=work.capacity%></p>
+						</div>
+						<!-- <img class="card-user avatar" src="images/seb.jpg"> -->
+						<a class="card-link" href="#" ></a>
 					</div>
-					<!-- <img class="card-user avatar" src="images/seb.jpg"> -->
-					<a class="card-link" href="#" ></a>
 				</div>
-			</div>
-			<% end  %>
+				<% end  %>
 
+			</div>
 		</div>
 	</div>
-</div>

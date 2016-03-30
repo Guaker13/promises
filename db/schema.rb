@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329114221) do
+ActiveRecord::Schema.define(version: 20160330092637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,8 +78,9 @@ ActiveRecord::Schema.define(version: 20160329114221) do
 
   create_table "workers", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "working_style"
   end
 
   add_index "workers", ["user_id"], name: "index_workers_on_user_id", using: :btree
@@ -88,8 +89,13 @@ ActiveRecord::Schema.define(version: 20160329114221) do
     t.integer  "business_id"
     t.boolean  "wifi"
     t.integer  "capacity"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "name"
+    t.string   "location"
+    t.float    "square_meters"
+    t.float    "price"
+    t.string   "price_unit"
   end
 
   add_index "workspaces", ["business_id"], name: "index_workspaces_on_business_id", using: :btree

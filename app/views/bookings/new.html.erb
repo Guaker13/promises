@@ -1,0 +1,34 @@
+<%= simple_form_for [@workspace, @booking], html: {class: 'form-inline margin'} do |f| %>
+
+<%= f.input :start_time, as: :string, input_html: { class: 'form-control input-lg datepicker' }, placeholder: "Select a start date" %>
+<%= f.input :end_time, as: :string, input_html: { class: 'form-control input-lg datepicker' }, placeholder: "Select an end date" %>
+<%= f.button :submit %>
+
+<% end -%>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$(function() {
+			$('.datepicker').daterangepicker({
+				"locale": {
+					"format": 'DD-MM-YYYY'
+				},
+				"singleDatePicker": true,
+				"showDropdowns": true,
+				"showWeekNumbers": true,
+				"autoApply": true,
+				"opens": "center",
+				"buttonClasses": "btn btn-lg"
+			});
+		});
+
+	});
+</script>
+
+<!-- Include  Moment.js -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />

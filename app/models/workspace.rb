@@ -6,7 +6,7 @@ class Workspace < ActiveRecord::Base
 	accepts_nested_attributes_for :pictures
 
 	geocoded_by :location
-	after_validation :geocode
+	after_create :geocode
 
 	def user
 		business.user

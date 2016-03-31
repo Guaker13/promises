@@ -1,3 +1,14 @@
+<% if @unavailabilities.nil? %>
+  <p>This space is fully available for any booking!</p>
+<% else %>
+  <p> This space has some unavailabilities:</p>
+  <ul>
+    <% @unavailabilities.each do |u| %>
+    <li><%= u.start_time %> until <%= u.end_time %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h3>Availabilities</h3>
 
 
@@ -23,4 +34,4 @@
       <% end %>
     <% end %>
   <% end %>
-
+<%= render 'form' %>

@@ -2,45 +2,34 @@
 
 	<input type="text" class="form-control input-lg" placeholder="city" name="city" value="<%= params[:city] %>">
 
-	<input type="text" class="form-control input-lg" name="start_time" placeholder="<%= params[:start_time] %>" value="<%= params[:start_time] %>">
+	<input type="text" class="daterangepicker form-control input-lg" name="start_time" placeholder="<%= params[:start_time] %>" value="<%= params[:start_time] %>">
 
-	<input type="text" class="form-control input-lg" name="end_time" placeholder="<%= params[:end_time] %>" value="<%= params[:end_time] %>">
+	<input type="text" class="daterangepicker form-control input-lg" name="end_time" placeholder="<%= params[:end_time] %>" value="<%= params[:end_time] %>">
 
 	<button type="submit" class="btn btn-primary btn-lg">Search</button>
 
 </form>
 
 <script type="text/javascript">
-	$(function() {
-		$('input[name="start_time"]').daterangepicker({
-			"locale": {
-				"format": 'DD-MM-YYYY'
-			},
-			"singleDatePicker": true,
-			"showDropdowns": true,
-			"showWeekNumbers": true,
-			"autoApply": true,
-			"opens": "center",
-			"buttonClasses": "btn btn-lg"
+$(document).ready(function(){
+
+
+		$(function() {
+			$('.daterangepicker').daterangepicker({
+				"locale": {
+					"format": 'DD-MM-YYYY'
+				},
+				"singleDatePicker": true,
+				"showDropdowns": true,
+				"showWeekNumbers": true,
+				"autoApply": true,
+				"opens": "center",
+				"buttonClasses": "btn btn-lg"
+			});
 		});
 	});
 </script>
 
-<script type="text/javascript">
-	$(function() {
-		$('input[name="end_time"]').daterangepicker({
-			"locale": {
-				"format": 'DD-MM-YYYY'
-			},
-			"singleDatePicker": true,
-			"showDropdowns": true,
-			"showWeekNumbers": true,
-			"autoApply": true,
-			"opens": "center",
-			"buttonClasses": "btn btn-lg"
-		});
-	});
-</script>
 
 <!-- Include  Moment.js -->
 <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>

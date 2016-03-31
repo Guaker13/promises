@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     @booking.worker = @worker
     @booking.workspace = @workspace
 
-    if availability_check(@booking.start_time, @booking.end_time)
+    if available?(@booking.start_time, @booking.end_time)
       respond_to do |format|
         if @booking.save
           @unavailabilty = Unavailability.new(booking_params)
@@ -21,13 +21,12 @@ class BookingsController < ApplicationController
           format.html { redirect_to workspace_path(@workspace), notice: 'Booking was successfully created.' }
           format.json { render :show, status: :created, location: @unavailability }
         else
-          format.html { redirect_to workspace_path(@workspace) }
+          format.html { redirect_to workspace_path(@workspace), alert: 'Booking was not created.' }
           format.json { render json: @booking.errors, status: :unprocessable_entity }
         end
       end
     else
-      format.html { redirect_to workspace_path(@workspace) }
-      format.json { render json: @booking.errors, status: :unprocessable_entity }
+      redirect_to workspace_path(@workspace), alert: 'Booking was not created.'
     end
   end
 
@@ -58,25 +57,16 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:workspace_id, :worker_id, :start_time, :end_time)
   end
 
-  def availability_check(start_time, end_time)
+  def available?(start_time, end_time)
     @workspace.unavailabilities.each do |unavailability|
-      unavailability_range = (unavailability.start_time..unavailability.end_time)
-      if unavailability_range.cover?(start_time..end_time)
+      if unavailability.start_time <= start_time && start_time <= unavailability.end_time
+        return false
+      elsif unavailability.start_time <= end_time && end_time <= unavailability.end_time
+        return false
+      elsif start_time <= unavailability.start_time && unavailability.start_time <= end_time
         return false
       end
     end
     return true
   end
 end
-
-
-  # if unavailability.start_time <= start_time && start_time <= unavailability.end_time
-  #   return false
-  # elsif unavailability.start_time <= end_time && end_time <= unavailability.end_time
-  #   return false
-  # elsif start_time <= unavailability.start_time && navailability.start_time <= end_time
-  #   return false
-  # elsif unavailability.start_time <= end_time && end_time <= unavailability.end_time
-  #   return false
-  # else
-  # end

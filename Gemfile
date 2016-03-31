@@ -33,6 +33,8 @@ gem 'omniauth-linkedin'
 # images upload
 gem 'cloudinary'
 gem 'carrierwave'
+# calendar display
+gem "simple_calendar", "~> 2.0"
 
 #Front-end setup suggested by Le Wagon
 gem 'bootstrap-sass', '~> 3.3.1'
@@ -42,6 +44,9 @@ gem "autoprefixer-rails"
 
 gem 'puma'
 gem 'faker'
+
+#geocoder
+gem "geocoder"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

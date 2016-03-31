@@ -46,6 +46,7 @@ class WorkspacesController < ApplicationController
   end
 
   def search
+    @workspaces = Workspace.near(params[:city])
   end
 
   def hot

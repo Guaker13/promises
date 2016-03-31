@@ -6,6 +6,7 @@ class WorkspacesController < ApplicationController
 
   def new
     @workspace = Workspace.new
+    @workspace.pictures.build
   end
 
   def create
@@ -65,6 +66,7 @@ class WorkspacesController < ApplicationController
   def workspace_params
     params.require(:workspace).permit(:business_id, :capacity,
       :wifi, :name, :location, :square_meters, :price,
-      :price_unit)
+      :price_unit,
+      pictures_attributes: [:photo, :photo_cache])
   end
 end

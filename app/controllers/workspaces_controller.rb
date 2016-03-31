@@ -25,6 +25,8 @@ class WorkspacesController < ApplicationController
   end
 
   def show
+    @latitude = @workspace.latitude
+    @longitude = @workspace.longitude
   end
 
   def edit

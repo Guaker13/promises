@@ -4,9 +4,9 @@
   <p> This space has some unavailabilities:</p>
   <ul>
     <% @unavailabilities.each do |u| %>
-    <li><%= u %></li>
+    <li><%= u.start_time %> until <%= u.end_time %></li>
     <% end %>
   </ul>
 <% end %>
 
-
+<%= render 'form' %>

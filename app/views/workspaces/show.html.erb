@@ -1,26 +1,24 @@
+<div class='container padded'>
+  <div class='row'>
+    <div class='col-xs-6 col-xs-offset-3'>
+      <div class='thumbnail'>
+        <div class='form_box'>
 
 
-<div class="card-container-show">
-	<div class="container">
-		<div class="row">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg');"></div>
 
-			<div class="col-xs-12 col-sm-12">
-				<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg');">
+          <div class="card-description-show">
 
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div>
-
-<div class="container padded">
-	<div class="card-description-show">
-
-		<%=@workspace.location  %>
-		<p>Wifi: <%=@workspace.wifi %></p>
-		<p>Price: <%=@workspace.price %> <%= @workspace.price_unit%></p>
-		<p><%=@workspace.capacity%> square meters</p>
-		<!-- <img class="card-user avatar" src="images/seb.jpg"> -->
-	</div>
+            <%=@workspace.location  %>
+            <p>Wifi: <%=@workspace.wifi %></p>
+            <p>Price: <%=@workspace.price %> <%= @workspace.price_unit%></p>
+            <p><%=@workspace.capacity%> square meters</p>
+            <!-- <img class="card-user avatar" src="images/seb.jpg"> -->
+          </div>
+          <%= render 'unavailabilities/index' %>
+          <%= render 'bookings/new' %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

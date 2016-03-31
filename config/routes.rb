@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   get 'bookings/list'
-  resources :bookings, only: [:new, :create, :show]
+  resources :bookings, only: [:show]
 
 
   get 'workspaces/search'
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'workspaces/dashboard'
   resources :workspaces do
     resources :unavailabilities
+    resources :bookings, only: [:new, :create]
   end
 
   resources :users, only: [:show, :edit, :update] do

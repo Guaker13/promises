@@ -49,7 +49,28 @@ class WorkspacesController < ApplicationController
   end
 
   def search
+    @show = []
     @workspaces = Workspace.near(params[:city])
+    p @workspaces
+    p "****************************************"
+    s = params[:start_time]
+    e = params[:end_time]
+    @date = s..e 
+    @workspaces.each do |workspace|
+      workspace.unavailabilities.each do |u|
+        start_time = u.start_time
+        end_time = u.end_time
+        unavailability = (start_time..end_time)
+        if unavailability.cover?(@date)
+          available = false
+        end
+      end
+      if available == false ? @show << true : @show << true
+    end
+    p "****************************************"
+    p @show
+    p "****************************************"
+
   end
 
   def hot

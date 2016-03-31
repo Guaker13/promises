@@ -21,4 +21,10 @@ class UnavailabilitiesController < ApplicationController
 
   def delete
   end
+
+  private
+
+  def set_unavailability
+    @unavailabilty = Unavailability.find(params[:id])
+  end
 end

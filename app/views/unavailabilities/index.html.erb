@@ -1,5 +1,7 @@
+<div class="container">
   <%= render 'availabilities' %>
 
   <% if current_user == @workspace.user %>
     <%= render 'unavailabilities/form' %>
   <% end -%>
+</div>

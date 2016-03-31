@@ -30,3 +30,12 @@ Business.all.each do |business|
       wifi: true)
   end
 end
+
+Workspace.all.each do |workspace|
+  3.times do
+    Unavailability.create(
+      workspace_id: workspace.id,
+      start_time: Faker::Date.between(Date.today, 1.week.from_now),
+      end_time: Faker::Date.between(1.week.from_now, 2.month.from_now))
+  end
+end

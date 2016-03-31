@@ -1,10 +1,11 @@
 class UnavailabilitiesController < ApplicationController
-  def index
+  before_action :find_workspace#, only: [:show]
 
+  def index
+    @unavailabilities = @workspace.unavailabilities.all
   end
 
   def show
-
   end
 
   def new
@@ -26,5 +27,9 @@ class UnavailabilitiesController < ApplicationController
 
   def set_unavailability
     @unavailabilty = Unavailability.find(params[:id])
+  end
+
+  def find_workspace
+    @workspace = Workspace.find(params[:workspace_id])
   end
 end

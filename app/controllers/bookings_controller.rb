@@ -60,14 +60,23 @@ class BookingsController < ApplicationController
 
   def availability_check(start_time, end_time)
     @workspace.unavailabilities.each do |unavailability|
-      if unavailability.start_time <= start_time && start_time <= unavailability.end_time
+      unavailability_range = (unavailability.start_time..unavailability.end_time)
+      if unavailability_range.cover?(start_time..end_time)
         return false
-      elsif unavailability.start_time <= end_time && end_time <= unavailability.end_time
-        return false
-      else
-
       end
-      return true
     end
+    return true
   end
 end
+
+
+  # if unavailability.start_time <= start_time && start_time <= unavailability.end_time
+  #   return false
+  # elsif unavailability.start_time <= end_time && end_time <= unavailability.end_time
+  #   return false
+  # elsif start_time <= unavailability.start_time && navailability.start_time <= end_time
+  #   return false
+  # elsif unavailability.start_time <= end_time && end_time <= unavailability.end_time
+  #   return false
+  # else
+  # end

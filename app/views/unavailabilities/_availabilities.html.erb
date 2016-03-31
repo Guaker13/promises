@@ -1,0 +1,25 @@
+<h3>Availabilities</h3>
+
+
+  <% if @workspace.unavailabilities.nil? %>
+    <%= month_calendar do |date| %>
+      <%= date.day %>
+    <% end %>
+  <% else %>
+    <%= month_calendar do |date| %>
+      <% available = true %>
+      <% @workspace.unavailabilities.each do |u| %>
+        <% start_time = u.start_time %>
+        <% end_time = u.end_time %>
+        <% unavailability = (start_time..end_time) %>
+        <% if unavailability.cover?(date) %>
+          <% available = false %>
+        <% end %>
+      <% end %>
+      <% if available %>
+        <div class="date-available"><%= date.day %></div>
+      <% else %>
+        <div class="date-unavailable"><%= date.day %></div>
+      <% end %>
+    <% end %>
+  <% end %>

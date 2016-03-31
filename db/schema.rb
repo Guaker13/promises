@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330200549) do
+ActiveRecord::Schema.define(version: 20160331100205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(version: 20160330200549) do
     t.float    "square_meters"
     t.float    "price"
     t.string   "price_unit"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "workspaces", ["business_id"], name: "index_workspaces_on_business_id", using: :btree

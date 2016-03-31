@@ -1,37 +1,5 @@
-<% if @unavailabilities.nil? %>
-  <p>This space is fully available for any booking!</p>
-<% else %>
-  <p> This space has some unavailabilities:</p>
-  <ul>
-    <% @unavailabilities.each do |u| %>
-    <li><%= u.start_time %> until <%= u.end_time %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <%= render 'availabilities' %>
 
-<h3>Availabilities</h3>
-
-
-  <% if @workspace.unavailabilities.nil? %>
-    <%= month_calendar do |date| %>
-      <%= date.day %>
-    <% end %>
-  <% else %>
-    <%= month_calendar do |date| %>
-      <% available = true %>
-      <% @workspace.unavailabilities.each do |u| %>
-        <% start_time = u.start_time %>
-        <% end_time = u.end_time %>
-        <% unavailability = (start_time..end_time) %>
-        <% if unavailability.cover?(date) %>
-          <% available = false %>
-        <% end %>
-      <% end %>
-      <% if available %>
-        <div class="date-available"><%= date.day %></div>
-      <% else %>
-        <div class="date-unavailable"><%= date.day %></div>
-      <% end %>
-    <% end %>
-  <% end %>
-<%= render 'form' %>
+  <% if current_user == @workspace.user %>
+    <%= render 'unavailabilities/form' %>
+  <% end -%>

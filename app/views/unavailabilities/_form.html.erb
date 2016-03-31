@@ -1,23 +1,25 @@
 <%= simple_form_for [@workspace, @unavailability], html: {class: 'form-inline margin'} do |f| %>
 
-  <%= f.input :start_time, as: :string, input_html: { class: 'form-control input-lg datepicker' }, placeholder: "Select a start date" %>
-    <%= f.input :end_time, as: :string, input_html: { class: 'form-control input-lg datepicker' }, placeholder: "Select an end date" %>
-    <%= f.button :submit %>
+<%= f.input :start_time, as: :string, input_html: { class: 'form-control input-lg datepicker' }, placeholder: "Select a start date" %>
+<%= f.input :end_time, as: :string, input_html: { class: 'form-control input-lg datepicker' }, placeholder: "Select an end date" %>
+<%= f.button :submit %>
 
 <% end -%>
 
 <script type="text/javascript">
-  $(function() {
-    $('.datepicker').daterangepicker({
-      "locale": {
-        "format": 'DD-MM-YYYY'
-      },
-      "singleDatePicker": true,
-      "showDropdowns": true,
-      "showWeekNumbers": true,
-      "autoApply": true,
-      "opens": "center",
-      "buttonClasses": "btn btn-lg"
+  $(document).ready(function(){
+    $(function() {
+      $('.datepicker').daterangepicker({
+        "locale": {
+          "format": 'DD-MM-YYYY'
+        },
+        "singleDatePicker": true,
+        "showDropdowns": true,
+        "showWeekNumbers": true,
+        "autoApply": true,
+        "opens": "center",
+        "buttonClasses": "btn btn-lg"
+      });
     });
   });
 </script>

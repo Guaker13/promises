@@ -28,13 +28,14 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
 <script type="text/javascript">
-var myLatlng = new google.maps.LatLng(<%=@latitude %>,<%=@longitude%>);
+  $(document).ready(function(){
+    var myLatlng = new google.maps.LatLng(<%=@latitude %>,<%=@longitude%>);
 
-  var myOptions = {
-    zoom: 16,
-    center: myLatlng,
-    scrollwheel: false,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    var myOptions = {
+      zoom: 16,
+      center: myLatlng,
+      scrollwheel: false,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
         styles: [] // TODO: replace [] by array from https://snazzymaps.com/
       };
 
@@ -44,5 +45,6 @@ var myLatlng = new google.maps.LatLng(<%=@latitude %>,<%=@longitude%>);
         map: map,
         title: "You are here!"
       });
-    </script>
+    });
+  </script>
 

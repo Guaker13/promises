@@ -2,9 +2,9 @@
 
 	<input type="text" class="form-control input-lg" placeholder="city" name="city" value="<%= params[:city] %>">
 
-	<input type="text" class="form-control input-lg" name="start" placeholder="<%= params[:start] %>" value="<%= params[:start] %>">
+	<input type="text" class="form-control input-lg" name="start_time" placeholder="<%= params[:start_time] %>" value="<%= params[:start_time] %>">
 
-	<input type="text" class="form-control input-lg" name="end" placeholder="<%= params[:end] %>" value="<%= params[:end] %>">
+	<input type="text" class="form-control input-lg" name="end_time" placeholder="<%= params[:end_time] %>" value="<%= params[:end_time] %>">
 
 	<button type="submit" class="btn btn-primary btn-lg">Search</button>
 
@@ -12,7 +12,7 @@
 
 <script type="text/javascript">
 	$(function() {
-		$('input[name="start"]').daterangepicker({
+		$('input[name="start_time"]').daterangepicker({
 			"locale": {
 				"format": 'DD-MM-YYYY'
 			},
@@ -22,15 +22,13 @@
 			"autoApply": true,
 			"opens": "center",
 			"buttonClasses": "btn btn-lg"
-		}, function(start, end, label) {
-			console.log("New date range selected: ' + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY')");
 		});
 	});
 </script>
 
 <script type="text/javascript">
 	$(function() {
-		$('input[name="end"]').daterangepicker({
+		$('input[name="end_time"]').daterangepicker({
 			"locale": {
 				"format": 'DD-MM-YYYY'
 			},
@@ -40,8 +38,6 @@
 			"autoApply": true,
 			"opens": "center",
 			"buttonClasses": "btn btn-lg"
-		}, function(start, end, label) {
-			console.log("New date range selected: ' + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY')");
 		});
 	});
 </script>

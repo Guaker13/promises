@@ -54,8 +54,6 @@ class WorkspacesController < ApplicationController
     @show = []
     @work = []
     @workspaces = Workspace.near(params[:city])
-    p @workspaces
-    p "****************************************"
     @s = (params[:start_time])
     @e = (params[:end_time])
     @workspaces.each do |workspace|
@@ -74,11 +72,7 @@ class WorkspacesController < ApplicationController
      @show.include?(false) ? @work << false : @work << true
      @show = []
  end
- p "****************************************"
- p @work
- p "****************************************"
  h = Hash[@workspaces.zip @work]
- p h
  h.each { |k,v| @show << k if v == true }
  @show
  redirect_to "/", alert: 'No worskpaces available at this given time period int the given area!' if @show.empty?

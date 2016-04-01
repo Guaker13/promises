@@ -12,7 +12,11 @@
 				<% Workspace.limit(3).each do |work|  %>
 
 				<div class="col-xs-12 col-sm-4">
-					<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg');">
+					<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(<% if work.pictures.empty?%>
+						<%='http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg'  %>
+						<%else  %>
+						<%= work.pictures.last.photo.url %>
+						<%end  %>);">
 						<div class="card-category"><%=work.location  %></div>
 						<div class="card-description">
 							<h2>Wifi: <%=work.wifi %></h2>

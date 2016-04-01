@@ -45,46 +45,52 @@ class WorkspacesController < ApplicationController
     end
   end
 
-  def delete
-  end
 
   def search
     @show = []
+    @work = []
     @workspaces = Workspace.near(params[:city])
     p @workspaces
     p "****************************************"
-    s = params[:start_time]
-    e = params[:end_time]
-    @date = s..e 
+    @s = (params[:start_time])
+    @e = (params[:end_time])
     @workspaces.each do |workspace|
-      workspace.unavailabilities.each do |u|
-        start_time = u.start_time
-        end_time = u.end_time
-        unavailability = (start_time..end_time)
-        if unavailability.cover?(@date)
-          available = false
-        end
-      end
-      if available == false ? @show << true : @show << true
-    end
-    p "****************************************"
-    p @show
-    p "****************************************"
+      workspace.unavailabilities.each do |unavailability|
 
-  end
+       if unavailability.start_time <= @s && @s <= unavailability.end_time
+        @show << false
+      elsif unavailability.start_time <= @e && @e <= unavailability.end_time
+       @show << false
+     elsif @s <= unavailability.start_time && unavailability.start_time <= @e
+       @show << false
+     else
+       @show <<  true
+     end
+   end
+     @show.include?(false) ? @work << false : @work << true
+     @show = []
+ end
+ p "****************************************"
+ p @work
+ p "****************************************"
+ h = Hash[@workspaces.zip @work]
+ p h
+ h.each { |k,v| @show << k if v == true }
+ @show
+end
 
-  def hot
-  end
+def hot
+end
 
-  def dashboard
-    @workspaces = Workspace.where(business_id: current_user.id)
-  end
+def dashboard
+  @workspaces = Workspace.where(business_id: current_user.id)
+end
 
-  private
+private
 
-  def set_workspace
-    @workspace = Workspace.find(params[:id])
-  end
+def set_workspace
+  @workspace = Workspace.find(params[:id])
+end
 
   # Do not forget to update the strong params here under
   # if you want

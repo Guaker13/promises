@@ -1,0 +1,7 @@
+<% if @workspace.errors.any? %>
+  // Render new workspace form with errors
+  $('#new_workspace').html("<%= j render 'form', workspace: @workspace %>");
+<% else %>
+  // Add it to the DOM, at the end of the existing workspaces. It's still hidden.
+  $('#workspaces').append("<%= j render 'dashboard', workspace: @workspace %>");
+<% end %>

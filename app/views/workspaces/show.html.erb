@@ -8,7 +8,7 @@
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(<% if @workspace.pictures.empty?%>
             <%='http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg'  %>
             <%else  %>
-            <%= work.pictures.last.photo.url %>
+            <%= @workspace.pictures.last.photo.url %>
             <%end  %>);"></div>
 
             <div class="card-description-show">

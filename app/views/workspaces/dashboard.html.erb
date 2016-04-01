@@ -3,7 +3,7 @@
    <% @workspaces.each do |workspace| %>
 
    <div class="col-xs-12 col-sm-4">
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg' %>) ;">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(<%= workspace.pictures.last.photo.url || 'http://www.allergiedietisten.com/wp-content/uploads/2015/08/antwerpen.jpg' %>) ;">
       <div class="card-category"><%= workspace.name %></div>
       <div class="card-description">
         <h2><%= workspace.capacity %></h2>
@@ -14,8 +14,8 @@
   </div>
   <% end -%>
 </div>
-<div class="row text-center">
-  <%= link_to "Create a new space", new_workspace_path, { :class => "btn btn-default"}%>
+<div class="row text-center" id="new_workspace" >
+  <%= link_to "Create a new space", new_workspace_path, remote: true %>
 </div>
 </div>
 

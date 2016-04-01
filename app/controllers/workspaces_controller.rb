@@ -7,6 +7,10 @@ class WorkspacesController < ApplicationController
   def new
     @workspace = Workspace.new
     @workspace.pictures.build
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def create
@@ -15,11 +19,11 @@ class WorkspacesController < ApplicationController
     respond_to do |format|
       if @workspace.save
         format.html { redirect_to workspaces_dashboard_path, notice: 'Workspace was successfully created.' }
-        format.json { render :show, status: :created, location: @workspace }
+        format.js
       else
         @workspaces = workspace.all
         format.html { render :new }
-        format.json { render json: @workspace.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

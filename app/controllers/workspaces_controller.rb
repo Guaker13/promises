@@ -77,6 +77,7 @@ class WorkspacesController < ApplicationController
  p h
  h.each { |k,v| @show << k if v == true }
  @show
+ redirect_to "/", alert: 'No worskpaces available at this given time period int the given area!' if @show.empty?
 end
 
 def hot

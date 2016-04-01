@@ -9,6 +9,6 @@
 			<h2><%= workspace.capacity %></h2>
 			<p><%= workspace.price %>€/<%= workspace.price_unit %></p>
 		</div>
-		<%= link_to "", "/workspaces/#{workspace.id}", class: "card-link" %>
+		<%= link_to "", workspace_unavailabilities_path(workspace), { :class => "card-link"}%>
 	</div>
 </div>

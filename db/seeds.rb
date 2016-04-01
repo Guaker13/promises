@@ -23,7 +23,7 @@ Business.all.each do |business|
   3.times do
     Workspace.create(
       business_id: business.id,
-      name: Faker::Address.city_prefix,
+      name: Faker::Address.city,
       location: ["Antwerp", "Brussel", "Paris"].sample,
       price: Faker::Number.number(3),
       capacity: 10,
